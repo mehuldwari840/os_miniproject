@@ -1,0 +1,35 @@
+======================================================================
+  SOMAIYASAT SATELLITE ONBOARD SYNCHRONIZATION ENGINE
+  CLASSICAL BOUNDED-BUFFER PRODUCER-CONSUMER (SEMAPHORES/MUTEX)
+======================================================================
+Subsystems: EPS, OBC, COMM | Buffer Size: 4 Slots
+
+[PRODUCER 1 | EPS    ] Sampled & Buffered Pkt #101 | Temp=31.0C | V=3.78V | Queue: 1/4
+[PRODUCER 3 | COMM   ] Sampled & Buffered Pkt #301 | Temp=20.0C | V=4.14V | Queue: 2/4
+[PRODUCER 2 | OBC    ] Sampled & Buffered Pkt #201 | Temp=32.0C | V=3.79V | Queue: 3/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #101 [EPS] Status=ALERT | RSSI=-102 dBm | Remaining Queue: 2/4
+[PRODUCER 2 | OBC    ] Sampled & Buffered Pkt #202 | Temp=29.0C | V=4.17V | Queue: 3/4
+[PRODUCER 1 | EPS    ] Sampled & Buffered Pkt #102 | Temp=23.0C | V=4.07V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #301 [COMM] Status=NOMINAL | RSSI=-86 dBm | Remaining Queue: 3/4
+[PRODUCER 3 | COMM   ] Sampled & Buffered Pkt #302 | Temp=18.0C | V=4.15V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #201 [OBC] Status=ALERT | RSSI=-107 dBm | Remaining Queue: 3/4
+[PRODUCER 1 | EPS    ] Sampled & Buffered Pkt #103 | Temp=28.0C | V=3.85V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #202 [OBC] Status=ALERT | RSSI=-100 dBm | Remaining Queue: 3/4
+[PRODUCER 2 | OBC    ] Sampled & Buffered Pkt #203 | Temp=26.0C | V=3.86V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #102 [EPS] Status=NOMINAL | RSSI=-108 dBm | Remaining Queue: 3/4
+[PRODUCER 3 | COMM   ] Sampled & Buffered Pkt #303 | Temp=31.0C | V=4.16V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #302 [COMM] Status=NOMINAL | RSSI=-92 dBm | Remaining Queue: 3/4
+[PRODUCER 1 | EPS    ] Sampled & Buffered Pkt #104 | Temp=31.0C | V=3.73V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #103 [EPS] Status=NOMINAL | RSSI=-98 dBm | Remaining Queue: 3/4
+[PRODUCER 2 | OBC    ] Sampled & Buffered Pkt #204 | Temp=27.0C | V=4.02V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #203 [OBC] Status=NOMINAL | RSSI=-96 dBm | Remaining Queue: 3/4
+[PRODUCER 3 | COMM   ] Sampled & Buffered Pkt #304 | Temp=31.0C | V=3.82V | Queue: 4/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #303 [COMM] Status=ALERT | RSSI=-94 dBm | Remaining Queue: 3/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #104 [EPS] Status=ALERT | RSSI=-101 dBm | Remaining Queue: 2/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #204 [OBC] Status=NOMINAL | RSSI=-106 dBm | Remaining Queue: 1/4
+  >>> [DOWNLINK TX] Transmitted to Ground Station: Pkt #304 [COMM] Status=ALERT | RSSI=-92 dBm | Remaining Queue: 0/4
+
+======================================================================
+MISSION STATUS: All 12 telemetry frames synchronized and downlinked.
+Zero data corruption, zero buffer overflow, verified mutex lock safety.
+======================================================================

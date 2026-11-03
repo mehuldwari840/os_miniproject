@@ -1,0 +1,55 @@
+======================================================================
+  SOMAIYASAT SATELLITE ONBOARD FLIGHT COMPUTER MEMORY MANAGEMENT
+  EXPERIMENT 8: SIMULATION OF PAGING AND SEGMENTATION WITH MMU
+======================================================================
+
+======================================================================
+  PART 1: SOMAIYASAT PAGING MEMORY ARCHITECTURE & MMU TRANSLATION
+======================================================================
+Page Size: 1024 Bytes (1 KB) | Offset: 10 bits
+Physical Frames: 16 Frames (16 KB Flight Computer RAM)
+
+--- PAGE TABLE (OBC MMU) ---
+Page #  Frame #   Status    Task Payload Description           
+-----------------------------------------------------------------
+0       3         VALID     TT&C Beacon Buffer                 
+1       7         VALID     Codec2 Voice Frame Buffer          
+2       12        VALID     M17 Data Packet Ring               
+3       1         VALID     SSTV High-Res Tile Cache           
+4       15        VALID     Housekeeping & EPS Telemetry       
+5       PAGE-FAULTINVALID   SomaiyaPod Burn-Wire Firmware (Swapped Out)
+6       5         VALID     AI Decision Weight Matrix          
+
+--- MMU ADDRESS TRANSLATION (LOGICAL -> PHYSICAL) ---
+Logical Addr (Hex)Page #    Offset    Frame #   Physical Addr (Hex) MMU Status     
+-------------------------------------------------------------------------------------
+0x200           0         512       3         0xE00             TRANSLATED     
+0x4B0           1         176       7         0x1CB0            TRANSLATED     
+0x800           2         0         12        0x3000            TRANSLATED     
+0xDAC           3         428       1         0x5AC             TRANSLATED     
+0x1450          5         80        -         TRAP / DISK       PAGE FAULT     
+0x1964          6         356       5         0x1564            TRANSLATED     
+
+======================================================================
+  PART 2: SOMAIYASAT SEGMENTATION & ACCESS PROTECTION
+======================================================================
+--- SEGMENT TABLE ---
+Segment ID  Segment Name                       Base Address    Limit (Bytes)
+---------------------------------------------------------------------------
+0           Flight Code Segment (RX-Only)      0x1000          4096        
+1           AI Weight Model Segment            0x2000          2048        
+2           Amateur RF Downlink Stack          0x3000          1536        
+3           Telemetry Heap & Buffers           0x4000          3072        
+
+--- SEGMENT BOUNDS CHECKING & ADDRESS RESOLUTION ---
+Segment ID  Offset    Limit       Physical Addr       Bounds Status       
+---------------------------------------------------------------------------
+0           1024      4096        0x1400            VALID (PASSED)      
+1           2040      2048        0x27F8            VALID (PASSED)      
+2           1600      1536        -                 SEGMENTATION FAULT  
+3           512       3072        0x4200            VALID (PASSED)      
+
+======================================================================
+CONCLUSION: Successfully simulated Paging address translation and
+Segmentation boundary protection for SomaiyaSat onboard flight memory.
+======================================================================

@@ -1,0 +1,56 @@
+======================================================================
+  SOMAIYASAT ONBOARD PACKET CACHE MANAGEMENT (LRU PAGE REPLACEMENT)
+  EXPERIMENT 10: VIRTUAL MEMORY LRU PAGE REPLACEMENT ALGORITHM
+======================================================================
+
+======================================================================
+  SOMAIYASAT LRU CACHE SIMULATION (FRAME CAPACITY = 3 FRAMES)
+======================================================================
+Time  Ref P#  Task Payload            Access      Physical Frames in RAM    Evicted Page    
+--------------------------------------------------------------------------------------------
+0     P1      TT&C Beacon             FAULT (MISS)[ P1 ]                    -               
+1     P2      SSTV Tile #1            FAULT (MISS)[ P1 P2 ]                 -               
+2     P3      Codec2 Voice            FAULT (MISS)[ P1 P2 P3 ]              -               
+3     P1      TT&C Beacon             HIT         [ P1 P2 P3 ]              -               
+4     P4      SSTV Tile #2            FAULT (MISS)[ P1 P3 P4 ]              Evicted P2      
+5     P2      SSTV Tile #1            FAULT (MISS)[ P1 P4 P2 ]              Evicted P3      
+6     P5      M17 Data Packets        FAULT (MISS)[ P4 P2 P5 ]              Evicted P1      
+7     P3      Codec2 Voice            FAULT (MISS)[ P2 P5 P3 ]              Evicted P4      
+8     P1      TT&C Beacon             FAULT (MISS)[ P5 P3 P1 ]              Evicted P2      
+9     P2      SSTV Tile #1            FAULT (MISS)[ P3 P1 P2 ]              Evicted P5      
+10    P6      Housekeeping Log        FAULT (MISS)[ P1 P2 P6 ]              Evicted P3      
+11    P1      TT&C Beacon             HIT         [ P1 P2 P6 ]              -               
+--------------------------------------------------------------------------------------------
+PERFORMANCE SUMMARY (Capacity = 3 Frames):
+Total Memory Accesses : 12
+Page Faults           : 10 (83.33%)
+Page Hits             : 2 (16.67%)
+
+======================================================================
+  SOMAIYASAT LRU CACHE SIMULATION (FRAME CAPACITY = 4 FRAMES)
+======================================================================
+Time  Ref P#  Task Payload            Access      Physical Frames in RAM    Evicted Page    
+--------------------------------------------------------------------------------------------
+0     P1      TT&C Beacon             FAULT (MISS)[ P1 ]                    -               
+1     P2      SSTV Tile #1            FAULT (MISS)[ P1 P2 ]                 -               
+2     P3      Codec2 Voice            FAULT (MISS)[ P1 P2 P3 ]              -               
+3     P1      TT&C Beacon             HIT         [ P1 P2 P3 ]              -               
+4     P4      SSTV Tile #2            FAULT (MISS)[ P1 P2 P3 P4 ]           -               
+5     P2      SSTV Tile #1            HIT         [ P1 P2 P3 P4 ]           -               
+6     P5      M17 Data Packets        FAULT (MISS)[ P1 P2 P4 P5 ]           Evicted P3      
+7     P3      Codec2 Voice            FAULT (MISS)[ P2 P4 P5 P3 ]           Evicted P1      
+8     P1      TT&C Beacon             FAULT (MISS)[ P2 P5 P3 P1 ]           Evicted P4      
+9     P2      SSTV Tile #1            HIT         [ P2 P5 P3 P1 ]           -               
+10    P6      Housekeeping Log        FAULT (MISS)[ P2 P3 P1 P6 ]           Evicted P5      
+11    P1      TT&C Beacon             HIT         [ P2 P3 P1 P6 ]           -               
+--------------------------------------------------------------------------------------------
+PERFORMANCE SUMMARY (Capacity = 4 Frames):
+Total Memory Accesses : 12
+Page Faults           : 8 (66.67%)
+Page Hits             : 4 (33.33%)
+
+======================================================================
+CACHE BEHAVIORAL ANALYSIS:
+Expanding frame capacity from 3 to 4 reduces page faults significantly,
+keeping frequent TT&C and Codec2 audio packets hot in satellite RAM.
+======================================================================

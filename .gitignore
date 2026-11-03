@@ -1,0 +1,30 @@
+# Compiled binaries (Linux / macOS)
+experiments/exp6_scheduler
+experiments/exp6_priority_aging_scheduler
+experiments/exp7_sync
+experiments/exp7_synchronization_producer_consumer
+experiments/exp8_memory
+experiments/exp8_memory_management_paging_segmentation
+experiments/exp10_lru
+experiments/exp10_lru_page_replacement
+
+# Compiled binaries (Windows)
+*.exe
+*.dll
+*.obj
+
+# Object files & debug symbols
+*.o
+*.dSYM/
+*.pdb
+
+# OS and Editor artifacts
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archives
+*.zip
+*.tar.gz
+

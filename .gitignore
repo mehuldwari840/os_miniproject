@@ -1,3 +1,9 @@
+# Documents & Reports
+*.pdf
+*.html
+*.zip
+*.tar.gz
+
 # Compiled binaries (Linux / macOS)
 experiments/exp6_scheduler
 experiments/exp6_priority_aging_scheduler
